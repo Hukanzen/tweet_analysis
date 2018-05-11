@@ -1,0 +1,3 @@
+[submodule "my_func"]
+	path = my_func
+	url = https://Hukanzen@github.com/Hukanzen/my_func.git
