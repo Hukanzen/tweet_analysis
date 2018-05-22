@@ -4,15 +4,20 @@ use strict;
 use warnings;
 use Data::Dumper;
 
+# macだと，cpanいる
+use JSON;
 
-require './my_func/Perl/my_csv.pm';
+
+#require './my_func/Perl/my_csv.pm';
+require './my_func/Perl/my_package.pm';
 
 sub main
 {
-	my $csv=my_csv->new;
-	$csv->read('tweets_mini.csv');
-	print Dumper $csv->get_length;
-
+	my $mypack=my_package->new;
+	
+	my @data=$mypack->load_file('./data/js/user_details.js');
+	
+	print Dumper @data;
 }
 
 &main;
