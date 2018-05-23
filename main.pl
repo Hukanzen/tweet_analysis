@@ -5,28 +5,26 @@ use warnings;
 use Data::Dumper;
 
 # macだと，cpanいる
-#use JSON;
+use JSON;
 
 
 #require './my_func/Perl/my_csv.pm';
-require './my_func/Perl/my_package.pm';
+#require './my_func/Perl/my_package.pm';
 
 &main;
 
 sub main
 {
-	#&userdata;
+	&userdata;
 	
-	&tweetdata;
+	#&tweetdata;
 }
 
 sub userdata
 {
-	my $mypack=my_package->new;
+	my $user_details=&load_file('./data/js/user_details.js');
 	
-	my $user_details=$mypack->load_file('./data/js/user_details.js');
-	
-	print Dumper $user_details;
+	print Dumper decode_json($user_details);
 }
 
 sub tweetdata
@@ -34,11 +32,12 @@ sub tweetdata
 	#my $mypack=my_package->new;
 	
 	my @files=glob "./data/js/tweets/*.js";
-	print Dumper @files;
+	#print Dumper @files;
 	
 	foreach my $tweetjs(@files){
 		my $user_details=load_file($tweetjs);
-		print $user_details;
+		#print $user_details;
+		#	print Dumper decode_json($user_details);
 	}
 }
 
