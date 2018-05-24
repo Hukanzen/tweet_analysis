@@ -1,6 +1,44 @@
 #!/usr/bin/env python3
 # coding: utf-8 
 
+import json
+import csv
 
-print("\u69D8\u3078\u3000always\u3055\u3093\u3061\u3087\u3046\u3081\u306E\u3086\u3046\u3072\u201970\u3067\u306F\u7121\u304F\u3066\u3000ALWAYS\u4E09\u4E01\u76EE\u306E\u5915\u65E5\u201964\u3067\u3059\u3088\u3002")
+def __main__():
+	tweets_data = get_tweet_json()
+	# print(data[0]['text'])
+	# print(data[2]['text'])
+	# print(data[4]['text'])
+	
+	for tweet in tweets_data:
+		try:
+			# Mention
+			mentions_data = tweet['entities']['user_mentions'][0]['id']
+			print(mentions_data)
+		except:
+			# Tweet
+			print('tweet')
+		
+		#print('{0},{1}'.format(tweet['text'].))
+	
+	#print(data)
+def get_tweet_json():
+		#print('aa')
+	f = open("./data/js/tweets/2012_01.1.js")
+
+	data = json.load(f)
+	 
+	#print(data)
+	
+	# print(data[0]["source"])
+	 
+	f.close
+	
+	return data
+
+
+	
+if __name__ == '__main__':
+	__main__()
+
 
